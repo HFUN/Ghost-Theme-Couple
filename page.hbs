@@ -1,0 +1,70 @@
+{{!< default}}
+{{#post}}
+<div class="col-md-8 home-content-area">
+  <article class="{{post_class}} article-index">
+    <header class="post-meta text-center" style="margin-bottom: 30px;">
+      <h1 class="text-center" style="margin: 30px 0;">{{title}}</h1>
+    </header>
+    <div id="post-content">
+      {{content}}
+    </div>
+    <footer class="post-footer text-center">
+      <div class="eof-line"></div>
+      <!-- 多说分享 -->
+      <div class="ds-share flat" data-thread-key="{{url}}" data-title="{{title}}"  data-images="{{image}}" data-url="{{url absolute="true"}}">
+        <div class="ds-share-inline">
+          <ul  class="ds-share-icons-16 text-center duoshuo">
+            <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到:</a></li>
+            <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+            <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+            <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+            <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+          </ul>
+          <div class="ds-share-icons-more">
+          </div>
+        </div>
+      </div>
+      <!-- 多说分享结束 -->
+    </footer>
+  </article>
+  <!-- 多说评论框 start -->
+  <div class="ds-thread padding-left-right" data-thread-key="{{url}}" data-title="{{title}}" data-url="{{url absolute="true"}}"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共 JS 代码 start -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"hfun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+  <!-- 多说公共 JS 代码 end -->
+</div><!-- col-md-8 -->
+<div class="col-md-3">
+  <aside>
+    {{#author}}
+    {{#if image}}
+      <p>
+        <a href="{{url}}">
+          <img class="center-block img-responsive" src="{{image}}" alt="author-image" style="width: 60px; border-radius: 30px; margin-top: 50px;">
+        </a>
+      </p>
+    {{/if}}
+    <p class="text-center"><a class="tag-btn" href="{{url}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{name}}</a></p>
+    {{#if bio}}
+      <blockquote>{{bio}}</blockquote>
+    {{/if}}
+    {{/author}}
+    <p class="text-center"><span class="glyphicon glyphicon-link" aria-hidden="true"></span> 目录</p>
+    <div id="toc" class="padding-left-right"></div>
+    <a class="fixed-info-btn" href="#toc">
+      <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+    </a>
+  </aside>
+</div><!-- col-md-3 -->
+</div><!-- row home-main -->
+</main>
+{{/post}}

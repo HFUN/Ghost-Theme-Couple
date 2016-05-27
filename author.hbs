@@ -1,0 +1,37 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+<div class="col-md-8">
+  <div class="home-content-area">
+    {{! The main content area on the homepage }}
+    {{! The tag below includes the post loop - partials/loop.hbs }}
+    {{> "loop"}}
+  </div><!-- home-content-area -->
+</div><!-- col-md-8 -->
+<div class="col-md-3">
+  {{#author}}
+  <aside class="text-center tag-sidebar" id="sidebar-fix">
+    {{#if image}}
+      <p>
+        <a href="{{url}}">
+          <img class="center-block img-responsive" src="{{image}}" alt="author-image" style="width: 60px; border-radius: 30px; margin-top: 50px;">
+        </a>
+      </p>
+    {{/if}}
+    <p class="text-center"><a class="tag-btn" href="{{url}}">{{name}}</a></p>
+    {{#if bio}}
+      <blockquote>{{bio}}</blockquote>
+    {{/if}}
+    <p>
+      {{#if location}}
+        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <i>{{location}}</i>&nbsp;
+      {{/if}}
+      {{#if website}}
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span> <i><a href="{{website}}">作者链接</a></i>
+      {{/if}}
+    </p>
+    <p class="author-stats">{{plural ../pagination.total empty='还没有发布任何内容' singular='目前已经公开发布 % 篇内容' plural='目前已经公开发布 % 篇内容'}}</p>
+  </aside>
+  {{/author}}
+</div><!-- col-md-3 -->
+</div><!-- row home-main -->
+</main>

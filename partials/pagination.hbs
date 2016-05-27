@@ -1,0 +1,50 @@
+<nav role="navigation" class="text-center">
+  <ul id="pagination-list" class="pagination"></ul>
+</nav>
+<script type="text/javascript">
+  //Grab the pagination span element
+  var pageList = document.getElementById('pagination-list');
+  //For each number, from 1 to the total number of pages, add in the page number and a link to the page
+  if ({{pages}} <= 9) {
+    for (var i = 1; i <= {{pages}}; i++) {
+      // If you are on the current page, bold the nubmer and do not link
+      if (i == {{page}}) {
+        pageList.innerHTML += "<li class=\"active\"><a href=\"#\">" + i + "</a></li>";
+      } else {
+        // Otherwise, add a link to the page
+        // This is where all the customization can go, space between each link, commas, etc.
+        pageList.innerHTML += "<li><a href={{page_url}}page/" + i + ">" + i + "</a></li>";
+      }
+    }
+  } else {
+    if (({{page}} > 4) && ({{page}} < ({{pages}} - 3))) {
+      pageList.innerHTML = "<li><a href={{page_url}}page/1>" + 1 + "</a></li><li><a href=\"#\">...</a></li><li><a href={{page_url}}page/" + ({{page}} - 2) + ">" + ({{page}} - 2) + "</a></li><li><a href={{page_url}}page/" + ({{page}} - 1) + ">" + ({{page}} - 1) + "</a></li><li class=\"active\"><a href={{page_url}}page/" + {{page}} + ">" + {{page}} + "</a></li><li><a href={{page_url}}page/" + ({{page}} + 1) + ">" + ({{page}} + 1) + "</a></li><li><a href={{page_url}}page/" + ({{page}} + 2) + ">" + ({{page}} + 2) + "</a></li><li><a href=\"#\">...</a></li><li><a href={{page_url}}page/{{pages}}>" + {{pages}} + "</a></li>";
+    } else {
+      if ({{page}} <= 4) {
+        for (var i = 1; i <= 6; i++) {
+        // If you are on the current page, bold the nubmer and do not link
+          if (i == {{page}}) {
+            pageList.innerHTML += "<li class=\"active\"><a href=\"#\">" + i + "</a></li>";
+          } else {
+            // Otherwise, add a link to the page
+            // This is where all the customization can go, space between each link, commas, etc.
+            pageList.innerHTML += "<li><a href={{page_url}}page/" + i + ">" + i + "</a></li>";
+          }
+        }
+        pageList.innerHTML += "<li><a href=\"#\">...</a></li><li><a href={{page_url}}page/{{pages}}>" + {{pages}} + "</a></li>";
+      } else {
+      	pageList.innerHTML = "<li><a href={{page_url}}page/1>" + 1 + "</a></li><li><a href=\"#\">...</a></li>"
+        for (var i = ({{pages}} - 5); i <= {{pages}}; i++) {
+          // If you are on the current page, bold the nubmer and do not link
+          if (i == {{page}}) {
+            pageList.innerHTML += "<li class=\"active\"><a href=\"#\">" + i + "</a></li>";
+          } else {
+            // Otherwise, add a link to the page
+            // This is where all the customization can go, space between each link, commas, etc.
+            pageList.innerHTML += "<li><a href={{page_url}}page/" + i + ">" + i + "</a></li>";
+          }
+        }
+      }
+    }
+  }
+</script>

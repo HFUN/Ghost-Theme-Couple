@@ -1,0 +1,48 @@
+{{!< default}}
+{{#post}}
+<div class="col-md-8 home-content-area">
+  <article class="{{post_class}} article-index">
+    <header class="post-meta text-center" style="margin-bottom: 30px;">
+      <h1 class="text-center" style="margin: 30px 0;">{{title}}</h1>
+    </header>
+    <div id="post-content">
+      <table class="table table-hover">
+        <tbody>
+          {{#get "posts" limit="all"}}
+            {{#foreach posts}}
+              <tr>
+                <td scope="row"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY-MM-DD"}}</time></td>
+                <td><a style="border-bottom: 0;" href="/{{slug}}">{{title}}</a></td>
+              </tr>
+            {{/foreach}}
+          {{/get}}
+        </tbody>
+      </table>
+    </div>
+    <footer class="post-footer text-center">
+      <div class="eof-line"></div>
+    </footer>
+  </article>
+</div><!-- col-md-8 -->
+<div class="col-md-3">
+  <aside>
+    {{#author}}
+    {{#if image}}
+      <p>
+        <a href="{{url}}">
+          <img class="center-block img-responsive" src="{{image}}" alt="author-image" style="width: 60px; border-radius: 30px; margin-top: 50px;">
+        </a>
+      </p>
+    {{/if}}
+    <p class="text-center"><a class="tag-btn" href="{{url}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{name}}</a></p>
+    {{#if bio}}
+      <blockquote>任何语言都无法描述那些美好的时光</blockquote>
+    {{/if}}
+    {{/author}}
+    <p class="text-center"><span class="glyphicon glyphicon-link" aria-hidden="true"></span> 目录</p>
+    <div id="toc" class="padding-left-right"></div>
+  </aside>
+</div><!-- col-md-3 -->
+</div><!-- row home-main -->
+</main>
+{{/post}}

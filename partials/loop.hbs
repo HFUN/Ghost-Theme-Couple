@@ -1,0 +1,31 @@
+{{! This is the post loop - each post will be output using this markup }}
+{{#foreach posts}}
+<article class="{{post_class}}">
+  <header class="post-meta text-center">
+    <h2 class="line-limit-1"><a title="{{title}}" href="/{{slug}}">{{title}}</a></h2>
+    <p class="small">
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <span>{{author}}&nbsp;&nbsp;</span>
+      <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+      <span><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY-MM-DD"}}</time>&nbsp;&nbsp;</span>
+      <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+      <span>{{tags separator=" / "}}</span>
+    </p>
+  </header>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="post-excerpt">
+        {{#if image}}
+          <p class="article-index-img"><a href="{{url}}"><img class="img-responsive post-index-image-300px center-block" src="{{image}}"></a></p>
+        {{else}}
+          <p class="article-index-img"><a href="{{url}}"><img class="img-responsive post-index-image-300px center-block" src="http://7xj0tn.com1.z0.glb.clouddn.com/img/site/picture_missing.jpg"></a></p>
+        {{/if}}
+      </div><!-- .post-excerpt -->
+    </div><!-- col-md-6 -->
+    <div class="col-md-6 padding-left-right">
+      <p class="line-limit-5">{{excerpt characters="200"}}</p>
+    </div><!-- col-md-6 -->
+  </div><!-- row -->
+</article>
+{{/foreach}}
+{{pagination}}

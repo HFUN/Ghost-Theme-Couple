@@ -1,0 +1,30 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+<div class="col-md-3">
+  <aside id="tagCloud">
+    <h1 class="text-center"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></h1>
+    {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}
+      {{#foreach tags}}
+        <a class="tag-btn" href="/tag/{{slug}}">{{name}} #</a>
+      {{/foreach}}
+    {{/get}}
+    <a class="fixed-top-btn" href="#couple-top" title="回到顶部"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span></a>
+  </aside>
+  <div class="eof-line"></div>
+</div><!-- col-md-3 -->
+<div class="col-md-8">
+  <div class="home-content-area">
+    {{! The main content area on the homepage }}
+    {{! The tag below includes the post loop - partials/loop.hbs }}
+    {{> "loop"}}
+  </div><!-- article-index -->
+</div><!-- col-md-8 -->
+</div><!-- row home-main -->
+</main>
+<!--<script type="text/javascript">
+  var tagCloudClass = [" h1"," h2"," h3"," h4"," h5"," h6"," h4"," h5"," h6"," h4"," h5"," h6"];
+  var tagList = document.getElementById("tagCloud").getElementsByTagName("a");
+  for (var n = 0; n < tagList.length; n++) {
+    tagList[n].className += tagCloudClass[Math.floor((Math.random()*tagCloudClass.length))];
+  }
+</script>-->

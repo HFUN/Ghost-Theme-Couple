@@ -1,0 +1,64 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+{{! The big featured header }}
+{{! The main content area on the homepage }}
+<div class="col-md-8">
+<div class="home-content-area row">
+  <div class="col-sm-6">
+  {{#get "posts" limit="8" order="published_at desc" include="tags" filter="tags:featured"}}
+  {{#foreach posts}}
+  <article class="{{post_class}} post-index">
+    <div class="full-width-img">
+      <img class="img-responsive post-index-img" src="{{image}}">
+    </div>
+    <header class="post-index-meta">
+      <p class="text-center"><a href="/{{slug}}">{{title}}</a></p>
+      <!--<p class="line-limit-1 small"><a href="/{{slug}}"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY-MM-DD"}}</time></a></p>-->
+    </header>
+  </article>
+  {{/foreach}}
+  {{/get}}
+  </div><!-- col-sm-6 -->
+  <div class="col-sm-6">
+  {{#get "posts" limit="8" page="2" order="published_at desc" include="tags" filter="tags:featured"}}
+  {{#foreach posts}}
+  <article class="{{post_class}} post-index">
+    <div class="full-width-img">
+      <img class="img-responsive post-index-img" src="{{image}}">
+    </div>
+    <header class="post-index-meta">
+      <p class="text-center"><a href="/{{slug}}">{{title}}</a></p>
+      <!--<p class="line-limit-1 small"><a href="/{{slug}}"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY-MM-DD"}}</time></a></p>-->
+    </header>
+  </article>
+  {{/foreach}}
+  {{/get}}
+  </div><!-- col-sm-6 -->
+</div><!-- home-content-area row -->
+<div class="row">
+  <div class="text-center home-index-btn">
+    <a class="btn" href="/tag/featured/page/3">查看更多<br><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+  </div>
+</div>
+<div class="eof-line"></div>
+</div><!-- col-md-8 -->
+<div class="col-md-3 padding-left-right">
+  <aside id="sidebar-fix" class="tag-sidebar">
+    <h1 class="text-center"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></h1>
+    {{#get "tags" limit="50" include="count.posts" order="count.posts desc"}}
+      {{#foreach tags}}
+        <a class="tag-btn" href="/tag/{{slug}}">{{name}} #</a>
+      {{/foreach}}
+    {{/get}}
+    <a class="fixed-top-btn" href="#couple-top"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span></a>
+  </aside>
+</div><!-- col-md-3 -->
+</div><!-- row home-main -->
+</main>
+<!--<script type="text/javascript">
+  var tagCloudClass = [" h1"," h2"," h3"," h4"," h5"," h6"," h4"," h5"," h6"," h4"," h5"," h6"];
+  var tagList = document.getElementById("sidebar-fix").getElementsByTagName("a");
+  for (var n = 0; n < tagList.length; n++) {
+    tagList[n].className += tagCloudClass[Math.floor((Math.random()*tagCloudClass.length))];
+  }
+</script>-->
